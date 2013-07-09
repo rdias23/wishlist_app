@@ -8,7 +8,9 @@
 				function get_amazon_product_info() 
 			 	{
 			 		var title_span = document.getElementById("btAsinTitle");
+alert(title_span);
 			 		var title = title_span.innerText;
+alert(title);
 
 			 		var image_tag = document.getElementById("main-image");
 			 		var image = image_tag.getAttribute("src");
@@ -40,32 +42,28 @@
 			 	function get_etsy_product_info()
 			 	{
 
-						var title_span = document.getElementById("item-title");
-				 		var title = "bleh"
+						var title_span = document.getElementById("listing-page-cart-inner").getElementsByTagName("span");
+                                                var title = title_span[0].innerText;
+alert(title);
 
+				 //		var image_div = document.getElementById("fullimage_link1");
+				 		var image_div = document.getElementById("image-0");
 
-
-
-
-				 		var image_div = document.getElementById("fullimage_link1");
-				 		var image_tag = image_div.getElementsByTagName("img");
-				 		
-
-
-alert("Something went wrong!");
-
-
-
+						var image_tag = image_div.getElementsByTagName("img");
 
 
 						var image = image_tag[0].getAttribute("src");
+alert(image);
 
-				 		var price_div = document.getElementsByClassName("item-price");
-				 		var price_span = price_div[0].getElementsByClassName("currency-value");
-				 		var price = price_span[0].innerText;
-				 		
+
+						var price_span = document.getElementById("listing-page-cart-inner").getElementsByClassName("currency-value");
+
+						var price = price_span[0].innerText;
+
+alert(price);
+
 				 		var link_url = document.URL;
-
+alert(link_url);
 						var product_info = {
 							title: title,
 							image: image,
@@ -73,15 +71,15 @@ alert("Something went wrong!");
 							link_url: link_url
 						};
 
-				 	//	if (product_info)
-				 	//	{
-				 	//		console.log(product_info);
-				 	//		return product_info;
-				 	//	}
-				 	//	else
-				 	//	{
-				 			alert("Something went wrong!");
-				 	//	}
+				 		if (product_info)
+				 		{
+				 			console.log(product_info);
+				 			return product_info;
+				 		}
+				 		else
+				 		{
+				 	      		alert("Something went wrong!");
+				 		}
 			 	}
 
 			 	function get_jcrew_product_info()
