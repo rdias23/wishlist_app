@@ -84,22 +84,50 @@ alert(link_url);
 
 			 	function get_jcrew_product_info()
 			 	{
-			  		var title_span = document.getElementById("pdp-title");
-				 		var title = title_span.innerText;
+			  		        var title_span = document.getElementById("productDetailsContainer");
 
-				 		var image_div = document.getElementsByClassName("prod_main_img");
-				 		var image_tag = image_div[0].getElementsByTagName("img");
+alert(title_span);
+
+
+
+
+
+				 		var title = title_span.getElementsByTagName("h1")[0].innerText;
+alert(title);
+				 		var image_div = document.getElementById("subContainer");
+alert(image_div);
+
+				 		var image_tag = image_div.getElementsByTagName("img");
+
+alert(image_tag);
 				 		var image = image_tag[0].getAttribute("src");
+alert(image);
 
 				 		//should be able to determine which radio button is checked. To improve later.
 
-				 		var price_div = document.getElementsByClassName("pdp-shapes");
-					 	var price_span = price_div[0].getElementsByClassName("price");
+				 		var price_div = document.getElementById("productDetailsContainer");
+					 	
+alert(price_div);
+
+
+
+
+						var price_span = price_div.getElementsByClassName("full-price");
+
+alert(price_span);
 					 	var price_with_dollar = price_span[0].innerText;
-					 	var price = strip_dollar(price_with_dollar);				
+alert(price_with_dollar);
+					 	var price_with_possible_space = strip_dollar(price_with_dollar);				
+alert(price_with_possible_space);
+						var price = strip_space(price_with_possible_space);
+alert(price);
+
+
+
+
 
 				 		var link_url = document.URL;
-
+alert(link_url);
 						var product_info = {
 							title: title,
 							image: image,
@@ -161,6 +189,23 @@ alert(link_url);
 					};
 					return stripped
 				}
+
+				function strip_space(string)
+                                {
+                                        var stripped = "";
+                                        for ( var i = 0; i < string.length; i++ )
+                                        {
+                                                if (string.charAt(i) != " ")
+                                                {
+                                                        stripped += string.charAt(i);
+                                                }
+						else
+						{
+							return stripped
+						}
+                                        };
+                                        return stripped
+                                }  
 
 				var product_info = determine_params();
 				send_data(product_info);
