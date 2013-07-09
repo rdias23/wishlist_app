@@ -8,26 +8,19 @@
 				function get_amazon_product_info() 
 			 	{
 			 		var title_span = document.getElementById("btAsinTitle");
-alert(title_span);
 			 		var title = title_span.innerText;
-alert(title);
-
 			 		var image_tag = document.getElementById("main-image");
 			 		var image = image_tag.getAttribute("src");
-
 			 		var price_span = document.getElementById("actualPriceValue");
 			 		var price_with_dollar = price_span.innerText;
 			 		var price = strip_dollar(price_with_dollar);
-
 			 		var link_url = document.URL;
-
 			 		var product_info = {
 			 			title: title,
 			 			image: image,
 			 			price: price,
 			 			link_url: link_url
 			 		};
-			 		
 			 		if (product_info)
 				 		{
 				 			console.log(product_info);
@@ -44,33 +37,18 @@ alert(title);
 
 						var title_span = document.getElementById("listing-page-cart-inner").getElementsByTagName("span");
                                                 var title = title_span[0].innerText;
-alert(title);
-
-				 //		var image_div = document.getElementById("fullimage_link1");
 				 		var image_div = document.getElementById("image-0");
-
 						var image_tag = image_div.getElementsByTagName("img");
-
-
 						var image = image_tag[0].getAttribute("src");
-alert(image);
-
-
 						var price_span = document.getElementById("listing-page-cart-inner").getElementsByClassName("currency-value");
-
 						var price = price_span[0].innerText;
-
-alert(price);
-
 				 		var link_url = document.URL;
-alert(link_url);
 						var product_info = {
 							title: title,
 							image: image,
 							price: price,
 							link_url: link_url
 						};
-
 				 		if (product_info)
 				 		{
 				 			console.log(product_info);
@@ -85,56 +63,22 @@ alert(link_url);
 			 	function get_jcrew_product_info()
 			 	{
 			  		        var title_span = document.getElementById("productDetailsContainer");
-
-alert(title_span);
-
-
-
-
-
 				 		var title = title_span.getElementsByTagName("h1")[0].innerText;
-alert(title);
-				 		var image_div = document.getElementById("subContainer");
-alert(image_div);
-
+						var image_div = document.getElementById("subContainer");
 				 		var image_tag = image_div.getElementsByTagName("img");
-
-alert(image_tag);
 				 		var image = image_tag[0].getAttribute("src");
-alert(image);
-
-				 		//should be able to determine which radio button is checked. To improve later.
-
 				 		var price_div = document.getElementById("productDetailsContainer");
-					 	
-alert(price_div);
-
-
-
-
 						var price_span = price_div.getElementsByClassName("full-price");
-
-alert(price_span);
 					 	var price_with_dollar = price_span[0].innerText;
-alert(price_with_dollar);
 					 	var price_with_possible_space = strip_dollar(price_with_dollar);				
-alert(price_with_possible_space);
 						var price = strip_space(price_with_possible_space);
-alert(price);
-
-
-
-
-
 				 		var link_url = document.URL;
-alert(link_url);
 						var product_info = {
 							title: title,
 							image: image,
 							price: price,
 							link_url: link_url
 						};
-				 		
 				 		if (product_info.title = title)
 				 		{
 				 			return product_info;
@@ -169,7 +113,7 @@ alert(link_url);
 				function send_data(product_info)
 				{
 					var domain = 'http://localhost:3000/add_wishlistitem?';
-					var url = domain + "title=" + product_info.title + "&image=" + product_info.image + "&price=" + product_info.price + "&link_url=" + product_info.link_url;
+					var url = domain + "title=" + encodeURIComponent(product_info.title) + "&image=" + encodeURIComponent(product_info.image) + "&price=" + encodeURIComponent(product_info.price) + "&link_url=" + encodeURIComponent(product_info.link_url);
 					
 					var script = document.createElement('script'); 
 					script.setAttribute('language','javascript'); 
@@ -206,10 +150,8 @@ alert(link_url);
                                         };
                                         return stripped
                                 }  
-
 				var product_info = determine_params();
 				send_data(product_info);
-
 		})();
 	}
 

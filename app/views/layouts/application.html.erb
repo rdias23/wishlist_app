@@ -20,8 +20,9 @@
 
           <% if current_user %>
                 <h3> Use the Wish List App to bookmark information about products from Amazon, J Crew, and Etsy</h3>
-                        <a class="bookmarklet btn" href="javascript:(function () { var s = document.createElement('script'); s.setAttribute('language','javascript'); s.setAttribute('src','http://localhost:3000/js/bookmarklet.js'); document.body.appendChild(s);})()">Bookmark Item </a>
-                        <------------ Drag this bookmarklet into your browser's toolbar
+		<span style="visibility: visible; text-decoration: underline"> <h4> ---------------------------> ONLY the Chrome web browser is fully supported for all three sites!!!!!!! Sorry. :( <--------------------------- </h4> </span>
+                        <a class="bookmarklet btn" href="javascript:(function () { var s = document.createElement('script'); s.setAttribute('language','javascript'); s.setAttribute('src','http://localhost:3000/js/bookmarklet.js'); document.body.appendChild(s);})()">Bookmark Item (Chrome ONLY)</a>
+                        <------------ Drag this bookmarklet into your <u> Chrome </u> web browser's toolbar
         <% end %>
 
 <%= yield %>
